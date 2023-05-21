@@ -13,7 +13,7 @@ const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
-    fetch('/api/categories')
+    fetch('http://18.231.65.154/budget/categories')
     .then((response) => {
       return response.json()
     })
@@ -29,7 +29,7 @@ const Categories = () => {
   }
 
   const deleteCategory = (category) => {
-    fetch(`/api/categories/${category.id}`, {method: 'DELETE'})
+    fetch(`http://18.231.65.154/budget/categories/${category.id}`, {method: 'DELETE'})
     .then((response) => {
       if (response.status !== 200 && response.status !== 201) {
         return response.json()

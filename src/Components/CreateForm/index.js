@@ -15,7 +15,7 @@ const FormModal = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch(`/api/categories`)
+    fetch(`http://18.231.65.154/budget/categories`)
     .then((response) => {
       return response.json()
     })
@@ -46,7 +46,7 @@ const FormModal = () => {
 
   const createMove = (move) => {
     if (!validateForm()) return;
-    fetch(`/api/operations`,
+    fetch(`http://18.231.65.154/budget/operations`,
     {
       method: 'POST',
       headers: {

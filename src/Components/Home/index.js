@@ -4,7 +4,7 @@ const Home = () => {
   const [moves, setMoves] = useState([]);
 
   useEffect(() => {
-    fetch('/api/operations')
+    fetch('http://18.231.65.154/budget/operations')
     .then((response) => {
       return response.json()
     })
