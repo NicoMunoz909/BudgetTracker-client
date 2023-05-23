@@ -16,7 +16,7 @@ const FormModal = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch(`http://18.231.65.154/budget/categories`)
+    fetch(`https://nmz.world/budget/categories`)
     .then((response) => {
       return response.json()
     })
@@ -26,7 +26,7 @@ const FormModal = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://18.231.65.154/budget/operations/${params.id}`)
+    fetch(`https://nmz.world/budget/operations/${params.id}`)
     .then((response) => {
       return response.json()
     })
@@ -61,7 +61,7 @@ const FormModal = () => {
 
   const editMove = (move) => {
     if (!validateForm()) return;
-    fetch(`http://18.231.65.154/budget/operations/${params.id}`,
+    fetch(`https://nmz.world/budget/operations/${params.id}`,
     {
       method: 'PATCH',
       headers: {
