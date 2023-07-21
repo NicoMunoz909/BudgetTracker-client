@@ -3,6 +3,7 @@ import { FaTimes, FaEdit } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import DeleteModal from "../DeleteModal";
+import { config } from "../../Constants";
 
 const Moves = () => {
   const navigate = useNavigate();
@@ -11,9 +12,10 @@ const Moves = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [selectedMove, setSelectedMove] = useState(null);
   const [filter, setFilter] = useState("All");
+  const URL = config.url;
 
   useEffect(() => {
-    fetch("http://localhost:4000/operations")
+    fetch(`${URL}/operations`)
       .then((response) => {
         return response.json();
       })
@@ -29,7 +31,7 @@ const Moves = () => {
   };
 
   const deleteMove = (move) => {
-    fetch(`http://localhost:4000/operations/${move.id}`, {
+    fetch(`${URL}/operations/${move.id}`, {
       method: "DELETE",
     }).then((response) => {
       if (response.status !== 200 && response.status !== 201) {
@@ -68,7 +70,7 @@ const Moves = () => {
             onChange={(e) => setFilter(e.target.value)}
           >
             <option>All</option>
-            <option>Expenditure</option>
+            <option>Expense</option>
             <option>Income</option>
           </select>
         </div>

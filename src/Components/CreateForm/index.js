@@ -2,6 +2,7 @@ import styles from "./createForm.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { config } from "../../Constants";
 
 const FormModal = () => {
   const navigate = useNavigate();
@@ -12,9 +13,10 @@ const FormModal = () => {
   const [type, setType] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const [categories, setCategories] = useState([]);
+  const URL = config.url;
 
   useEffect(() => {
-    fetch(`http://localhost:4000/categories`)
+    fetch(`${URL}/categories`)
       .then((response) => {
         return response.json();
       })
@@ -45,7 +47,7 @@ const FormModal = () => {
 
   const createMove = (move) => {
     if (!validateForm()) return;
-    fetch(`http://localhost:4000/operations`, {
+    fetch(`${URL}/operations`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

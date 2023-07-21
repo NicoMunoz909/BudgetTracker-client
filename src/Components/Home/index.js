@@ -1,10 +1,13 @@
 import styles from "./home.module.css";
 import { useState, useEffect } from "react";
+import { config } from "../../Constants";
+
 const Home = () => {
   const [moves, setMoves] = useState([]);
+  const URL = config.url;
 
   useEffect(() => {
-    fetch("http://localhost:4000/operations")
+    fetch(`${URL}/operations`)
       .then((response) => {
         return response.json();
       })

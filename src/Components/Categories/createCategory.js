@@ -1,13 +1,15 @@
 import styles from "./createCategory.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { config } from "../../Constants";
 
 const CreateCategory = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const URL = config.url;
 
   const createCategory = (move) => {
-    fetch(`http://localhost:4000/categories`, {
+    fetch(`${URL}/categories`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

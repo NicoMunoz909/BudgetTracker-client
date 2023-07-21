@@ -2,6 +2,7 @@ import styles from "./updateForm.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { formatISO } from "date-fns";
+import { config } from "../../Constants";
 
 const FormModal = () => {
   const navigate = useNavigate();
@@ -13,9 +14,10 @@ const FormModal = () => {
   const [type, setType] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const [categories, setCategories] = useState([]);
+  const URL = config.url;
 
   useEffect(() => {
-    fetch(`http://localhost:4000/categories`)
+    fetch(`${URL}/categories`)
       .then((response) => {
         return response.json();
       })
@@ -25,7 +27,7 @@ const FormModal = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/operations/${params.id}`)
+    fetch(`${URL}/operations/${params.id}`)
       .then((response) => {
         return response.json();
       })
@@ -60,7 +62,7 @@ const FormModal = () => {
 
   const editMove = (move) => {
     if (!validateForm()) return;
-    fetch(`http://localhost:4000/operations/${params.id}`, {
+    fetch(`${URL}/operations/${params.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

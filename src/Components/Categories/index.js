@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import DeleteModal from "../DeleteModal";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { config } from "../../Constants";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -10,9 +11,10 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [showDelete, setShowDelete] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const URL = config.url;
 
   useEffect(() => {
-    fetch("http://localhost:4000/categories")
+    fetch(`${URL}/categories`)
       .then((response) => {
         return response.json();
       })
@@ -28,7 +30,7 @@ const Categories = () => {
   };
 
   const deleteCategory = (category) => {
-    fetch(`http://localhost:4000/categories/${category.id}`, {
+    fetch(`${URL}/categories/${category.id}`, {
       method: "DELETE",
     }).then((response) => {
       if (response.status !== 200 && response.status !== 201) {
