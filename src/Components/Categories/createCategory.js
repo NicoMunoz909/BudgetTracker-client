@@ -1,27 +1,25 @@
-import styles from './createCategory.module.css'
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import styles from "./createCategory.module.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateCategory = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
   const createCategory = (move) => {
-    fetch(`https://nmz.world/budget/categories`,
-    {
-      method: 'POST',
+    fetch(`http://localhost:4000/categories`, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(move)
-    })
-    .then((response) => {
+      body: JSON.stringify(move),
+    }).then((response) => {
       if (response.status !== 200 && response.status !== 201) {
-        return response.json()
+        return response.json();
       }
       navigate(-1);
-    })
-  }
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -32,16 +30,28 @@ const CreateCategory = () => {
         <form>
           <div>
             <label htmlFor="name">Name</label>
-            <input type="text" name="name" id="name" onChange={(e) => setName(e.target.value)} />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
         </form>
         <div className={styles.btnContainer}>
-          <button className={styles.cancelBtn} onClick={() => navigate(-1)}>Cancel</button>
-          <button className={styles.saveBtn} onClick={() => createCategory({name})}>Save</button>
+          <button className={styles.cancelBtn} onClick={() => navigate(-1)}>
+            Cancel
+          </button>
+          <button
+            className={styles.saveBtn}
+            onClick={() => createCategory({ name })}
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CreateCategory
+export default CreateCategory;
