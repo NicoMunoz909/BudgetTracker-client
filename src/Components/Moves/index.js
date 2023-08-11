@@ -55,29 +55,19 @@ const Moves = () => {
     <div className={styles.container}>
       <Outlet />
       {showDelete && (
-        <DeleteModal
-          onCancel={() => setShowDelete(false)}
-          onConfirm={() => deleteMove(selectedMove)}
-        />
+        <DeleteModal onCancel={() => setShowDelete(false)} onConfirm={() => deleteMove(selectedMove)} />
       )}
       <h2>Moves</h2>
       <div className={styles.controlsContainer}>
         <div>
           <label htmlFor="filter">Show:</label>
-          <select
-            className={styles.filter}
-            name="filter"
-            onChange={(e) => setFilter(e.target.value)}
-          >
+          <select className={styles.filter} name="filter" onChange={(e) => setFilter(e.target.value)}>
             <option>All</option>
             <option>Expense</option>
             <option>Income</option>
           </select>
         </div>
-        <button
-          className={styles.addBtn}
-          onClick={() => navigate(`${location.pathname}/new`)}
-        >
+        <button className={styles.addBtn} onClick={() => navigate(`${location.pathname}/new`)}>
           Add Move
         </button>
       </div>
@@ -90,7 +80,7 @@ const Moves = () => {
               <th>Date</th>
               <th>Category</th>
               <th>Type</th>
-              <th>Actions</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -109,9 +99,7 @@ const Moves = () => {
                     <td>
                       <button
                         className={styles.tableBtn}
-                        onClick={() =>
-                          navigate(`${location.pathname}/${move.id}`)
-                        }
+                        onClick={() => navigate(`${location.pathname}/${move.id}`)}
                       >
                         <FaEdit></FaEdit>
                       </button>

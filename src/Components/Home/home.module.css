@@ -1,16 +1,10 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-self: center;
-  height: 80%;
-  width: 80%;
-  margin: auto;
-  grid-column: 3/13;
+  grid-column: 4/12;
+  margin-top: 10vh;
 }
 
-.balance {
-  display: flex;
+.container > p {
+  margin: 10px 0 10px 0;
 }
 
 .tableContainer {
@@ -19,6 +13,6 @@
 
 @media (max-width: 768px) {
   .container {
-    grid-column: 1/13;
+    grid-column: 2/12;
   }
 }

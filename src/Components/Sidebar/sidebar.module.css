@@ -54,16 +54,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 10vh;
     padding: 0;
     grid-column: 1/13;
   }
   .links {
     display: flex;
+    justify-content: space-around;
     width: 100%;
-    position: absolute;
     background-color: rgb(36 36 78);
-    top: 80px;
   }
   .header {
     margin-bottom: 0;
