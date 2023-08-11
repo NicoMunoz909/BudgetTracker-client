@@ -70,12 +70,7 @@ const FormModal = () => {
         <form>
           <div>
             <label htmlFor="concept">Concept</label>
-            <input
-              type="text"
-              name="concept"
-              id="concept"
-              onChange={(e) => setConcept(e.target.value)}
-            />
+            <input type="text" name="concept" id="concept" onChange={(e) => setConcept(e.target.value)} />
             {errorMessages.concept && <span>Concept can't be empty</span>}
           </div>
           <div>
@@ -90,12 +85,7 @@ const FormModal = () => {
           </div>
           <div>
             <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              name="date"
-              id="date"
-              onChange={(e) => setDate(e.target.value)}
-            />
+            <input type="date" name="date" id="date" onChange={(e) => setDate(e.target.value)} />
             {errorMessages.date && <span>You must pick a date</span>}
           </div>
           <div>
@@ -115,15 +105,10 @@ const FormModal = () => {
           </div>
           <div>
             <label htmlFor="type">Type </label>
-            <select
-              name="type"
-              id="type"
-              defaultValue="Select One"
-              onChange={(e) => setType(e.target.value)}
-            >
+            <select name="type" id="type" defaultValue="Select One" onChange={(e) => setType(e.target.value)}>
               <option disabled>Select One</option>
               <option value="Income">Income</option>
-              <option value="Expenditure">Expenditure</option>
+              <option value="Expense">Expense</option>
             </select>
             {errorMessages.type && <span>You must select a type</span>}
           </div>
@@ -134,9 +119,7 @@ const FormModal = () => {
           </button>
           <button
             className={styles.saveBtn}
-            onClick={() =>
-              createMove({ concept, amount, date, category, type })
-            }
+            onClick={() => createMove({ concept, amount, date, category, type })}
           >
             Save
           </button>

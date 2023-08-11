@@ -32,11 +32,11 @@ const FormModal = () => {
         return response.json();
       })
       .then((data) => {
-        setConcept(data[0].concept);
-        setAmount(data[0].amount);
-        setDate(formatISO(new Date(data[0].date), { representation: "date" }));
-        setCategory(data[0].category);
-        setType(data[0].type);
+        setConcept(data.concept);
+        setAmount(data.amount);
+        setDate(formatISO(new Date(data.date), { representation: "date" }));
+        setCategory(data.category);
+        setType(data.type);
       });
   }, [params.id]);
 
@@ -107,13 +107,7 @@ const FormModal = () => {
           </div>
           <div>
             <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              name="date"
-              id="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
+            <input type="date" name="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
             {errorMessages.date && <span>You must pick a date</span>}
           </div>
           <div>
